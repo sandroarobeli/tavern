@@ -1,0 +1,33 @@
+{
+  "name": "tavern",
+  "version": "1.0.0",
+  "description": "Restaurant management desktop application",
+  "main": "./out/main/index.js",
+  "scripts": {
+    "start": "electron-vite preview",
+    "dev": "electron-vite dev -w",
+    "prebuild": "electron-vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sandroarobeli/tavern.git"
+  },
+  "keywords": [
+    "electron",
+    "react",
+    "vite",
+    "tailwind",
+    "redux",
+    "sqlite",
+    "prisma"
+  ],
+  "author": "Alex A",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sandroarobeli/tavern/issues"
+  },
+  "homepage": "https://github.com/sandroarobeli/tavern#readme",
+  "devDependencies": {
+    "electron-vite": "^1.0.29"
+  }
+}
