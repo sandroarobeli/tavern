@@ -1,3 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* KEEP EVERYTHING BELOW AS REFERENCE FOR NOW */
+
 body {
   display: flex;
   flex-direction: column;
@@ -23,22 +29,6 @@ body {
 
 ul {
   list-style: none;
-}
-
-code {
-  font-weight: 600;
-  padding: 3px 5px;
-  border-radius: 2px;
-  background-color: #26282e;
-  font-family:
-    ui-monospace,
-    SFMono-Regular,
-    SF Mono,
-    Menlo,
-    Consolas,
-    Liberation Mono,
-    monospace;
-  font-size: 85%;
 }
 
 a {
