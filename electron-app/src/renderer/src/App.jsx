@@ -3,6 +3,7 @@
 // text: #F80 background: #222 font-family: League Gothic font-variant: Regular 400 normal
 
 // 1. TEST UI PAGE RESPONSIVENESS
+// 2. HASH THE PASSWORDS AT SOME POINT IN NEAR FUTURE
 const App = () => {
   return (
     <div className="">
