@@ -1,13 +1,21 @@
-import { app, shell, BrowserWindow } from 'electron'
+import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 
+// console.log('platform: ', process.platform) // test
+import { listMembers } from './controllers/listMembers'
+
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
+    width: 1065,
+    height: 800,
+    minWidth: 900,
+    minHeight: 670,
+    title: 'Tavern',
+    icon: join(__dirname, '../../resources/icon32.png'),
+    // backgroundMaterial: // 'acrylic', // test
     show: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
@@ -16,6 +24,11 @@ function createWindow() {
       sandbox: false
     }
   })
+
+  // Opens devtools in the window in development environment
+  if (is.dev) {
+    mainWindow.webContents.openDevTools()
+  }
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
@@ -69,3 +82,7 @@ app.on('window-all-closed', () => {
 
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.
+ipcMain.handle('list:members', async () => {
+  const members = await listMembers()
+  return members
+})

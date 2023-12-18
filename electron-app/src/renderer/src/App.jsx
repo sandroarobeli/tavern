@@ -1,3 +1,6 @@
+import { Routes, Route } from 'react-router-dom'
+
+import Login from './pages/general/Login'
 // import Versions from './components/Versions' // DO NOT DELETE YET
 
 // text: #F80 background: #222 font-family: League Gothic font-variant: Regular 400 normal
@@ -6,12 +9,10 @@
 // 2. HASH THE PASSWORDS AT SOME POINT IN NEAR FUTURE
 const App = () => {
   return (
-    <div className="">
-      <h1 className="text-3xl text-green-600 font-semibold font-cantarelli">
-        This is a future Tavern app
-      </h1>
-      <h2 className="text-xl text-amber-500">Under Construction</h2>
-    </div>
+    <Routes>
+      <Route path="" exact element={<Login />} />
+      {/*<Route path="admin/dashboard" exact element={<AdminDashboard />} />*/}
+    </Routes>
   )
 }
 
