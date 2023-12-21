@@ -1,16 +1,17 @@
-import prisma from '../prisma'
+import client from '../client'
 
 export const listMembers = async () => {
   try {
-    const members = await prisma.member.findMany({
+    const members = await client.member.findMany({
       orderBy: [
         {
           name: 'asc'
         }
       ],
       select: {
+        id: true,
         name: true,
-        password: true, // see if I really need this one
+        password: true,
         isAdmin: true
       }
     })
