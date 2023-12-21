@@ -5,6 +5,8 @@ import icon from '../../resources/icon.png?asset'
 
 // console.log('platform: ', process.platform) // test
 import { listMembers } from './controllers/listMembers'
+import { login } from './controllers/login'
+import { logout } from './controllers/logout'
 
 function createWindow() {
   // Create the browser window.
@@ -83,6 +85,27 @@ app.on('window-all-closed', () => {
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.
 ipcMain.handle('list:members', async () => {
-  const members = await listMembers()
-  return members
+  try {
+    const members = await listMembers()
+    return members
+  } catch (error) {
+    console.error(error)
+    return error
+  }
+})
+ipcMain.handle('login:members', async (event, { id, password }) => {
+  try {
+    const member = await login(id, password, process.env.SECRET_TOKEN_KEY)
+    return member
+  } catch (error) {
+    return error
+  }
+})
+ipcMain.handle('logout:members', async (event, { id, password }) => {
+  try {
+    const member = await logout(id, password)
+    return member
+  } catch (error) {
+    return error
+  }
 })
